@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Face Controlled Game</title>
+
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: linear-gradient(180deg,
+        #87CEEB 0%,
+        #B0D4F1 30%,
+        #E0F2F7 60%,
+        #FFE5B4 100%
+      );
+      font-family: 'Arial', sans-serif;
+    }
+
+    body::before,
+    body::after {
+      content: '';
+      position: absolute;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 100px;
+      animation: float 20s infinite ease-in-out;
+    }
+
+    body::before {
+      width: 200px;
+      height: 60px;
+      top: 50px;
+      left: -200px;
+      animation-delay: 0s;
+    }
+
+    body::after {
+      width: 150px;
+      height: 50px;
+      top: 150px;
+      left: -150px;
+      animation-delay: 10s;
+    }
+
+    video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: scaleX(-1);
+    }
+
+    #text {
+      position: absolute;
+      z-index: 10;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateX(0) translateY(0);
+      }
+      50% {
+        transform: translateX(calc(100vw + 200px)) translateY(-20px);
+      }
+    }
+
+    @keyframes sparkle {
+      0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8));
+      }
+      50% {
+        transform: scale(1.2);
+        filter: drop-shadow(0 0 15px rgba(255, 215, 0, 1));
+      }
+    }
+
+    @keyframes wave {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    @keyframes explode0 {
+      to {
+        transform: translate(30px, -30px);
+        opacity: 0;
+      }
+    }
+
+    @keyframes explode1 {
+      to {
+        transform: translate(40px, 0px);
+        opacity: 0;
+      }
+    }
+
+    @keyframes explode2 {
+      to {
+        transform: translate(30px, 30px);
+        opacity: 0;
+      }
+    }
+
+    @keyframes explode3 {
+      to {
+        transform: translate(0px, 40px);
+        opacity: 0;
+      }
+    }
+
+    @keyframes explode4 {
+      to {
+        transform: translate(-30px, 30px);
+        opacity: 0;
+      }
+    }
+
+    @keyframes explode5 {
+      to {
+        transform: translate(-40px, 0px);
+        opacity: 0;
+      }
+    }
+
+    @keyframes explode6 {
+      to {
+        transform: translate(-30px, -30px);
+        opacity: 0;
+      }
+    }
+
+    @keyframes explode7 {
+      to {
+        transform: translate(0px, -40px);
+        opacity: 0;
+      }
+    }
+  </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_detection"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils"></script>
+</head>
+
+<body>
+  <video id="video" autoplay playsinline></video>
+
+  <img
+    id="text"
+    src="assets/player_left.png"
+    width="200"
+    height="150"
+  />
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
+
